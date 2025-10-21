@@ -53,6 +53,9 @@ public class ejerciciofor8  {
                     System.out.println("Saliendo de la Pokedex");
                     verdad = false;
                     break;
+                default:
+                    System.out.println("Elige una opcion valida");
+                    break;
             }
         }while (verdad);
     }
