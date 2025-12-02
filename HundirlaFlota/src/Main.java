@@ -14,7 +14,6 @@ public class Main {
         int numBarcos = tamanosBarcos.length;
         char[][] tablero= Tablero.crearTableroDisparos(FILAS, COLUMNAS);
         System.out.println("Hola");
-        Tablero.mostrarTableroDisparos(tablero);
 
         // Tableros de barcos: guardan IDs de barco o -1 si no hay barco
         int[][] tableroBarcosJugador = Tablero.crearTableroBarcos(FILAS, COLUMNAS);
@@ -23,7 +22,7 @@ public class Main {
         // Tableros de disparos: lo que ve cada jugador (agua, tocado, hundido, sin disparar)
         char[][] tableroDisparosJugador = Tablero.crearTableroDisparos(FILAS, COLUMNAS);
         char[][] tableroDisparosCPU = Tablero.crearTableroDisparos(FILAS, COLUMNAS);
-
+        Tablero.mostrarTableroConBarcos(tableroBarcosJugador, tableroDisparosCPU);
         // Impactos por barco.
         // Aquí guardaremos cuantos impactos lleva cada barco.
         // Por ejemplo:

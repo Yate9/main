@@ -14,7 +14,7 @@ public class Tablero {
                 tablerobarcos[i][j]= -1;
             }
         }
-            return null;
+            return tablerobarcos;
     }
 
     /**
@@ -66,15 +66,46 @@ public class Tablero {
      * - había un barco y hubo un disparo, el barco está hundido: 'H'
      * - hay un barco, el barco "1": 1
      */
-    public static void mostrarTableroConBarcos(int[][] tableroBarcos, char[][] tableroDisparosCPU) {
-        // TODO
+    public static void mostrarTableroConBarcos(int[][] tablerobarcos, char[][] tablerodisparoscpu) {
+
+        int filas = tablerobarcos.length;
+        int columnas = tablerobarcos[0].length;
+
+        for (int i=filas-1 ; i >=0; i--) {
+            System.out.print(i+" ");
+            for (int j = 0; j < columnas; j++) {
+                int barco = tablerobarcos[i][j];
+                char disparo = tablerodisparoscpu[i][j];
+                char simbolo;
+                if (barco==-1) {
+                    if (disparo =='.') {
+                        simbolo = '.';
+                    }else {
+                        simbolo = '~';
+                    }
+
+                }else {
+                    if (disparo =='.') {
+                        simbolo = (char)('0'+barco);
+                    }else {
+                        simbolo = disparo;
+                    }
+                }
+                System.out.print(simbolo+" ");
+            }
+            System.out.println();
+        }
+        System.out.print(" ");
+        for (int i = 0 ; i < columnas; i++) {
+            System.out.print(i+" ");
+        }
+        System.out.println();
     }
 
     /**
      * Comprueba si una coordenada está dentro del tablero. Devuelve "true" si está, "false" si no está.
      */
     public static boolean esCoordenadaValida(int fila, int columna, int filas, int columnas) {
-         // TODO
-        return false;
+        return fila >= 0 && fila < filas && columna >= 0 && columna < columnas;
     }
 }
