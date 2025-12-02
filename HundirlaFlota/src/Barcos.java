@@ -15,7 +15,19 @@ public class Barcos {
      *
      */
     public static void colocarBarcosAleatorios(int[][] tableroBarcos, int[] tamanosBarcos) {
-        // TODO
+        for (int idBarco =0; idBarco < tamanosBarcos.length; idBarco++) {
+            int tamano = tamanosBarcos[idBarco];
+            boolean colocado = false;
+            while (!colocado) {
+                int fila = (int)Math.random()*tableroBarcos.length;
+                int columna = (int)Math.random()*tableroBarcos[0].length;
+                boolean horizontal = Math.random() > 0.5;
+                if (sePuedeColocarBarco(tableroBarcos, fila, columna,tamano, horizontal))
+                    colocarBarco(tableroBarcos,fila,columna,tamano,horizontal,idBarco);
+                colocado = true;
+                }
+            }
+        }
     }
 
     /**
@@ -25,9 +37,32 @@ public class Barcos {
      * Nos devuelve true si se puede colocar, false si no se puede colocar.
      */
     public static boolean sePuedeColocarBarco(int[][] tablero, int fila, int columna, int tamano, boolean horizontal) {
-        //TODO
-        return false;
+        if (horizontal) {
+            if (columna + tamano > tablero[0].length) {
+                return false;
+            } else {
+                if (fila + tamano > tablero.length) {
+                    return false;
+                }
+            }
+        }
+        if (horizontal) {
+            for(int i = columna; i <columna+tamano; i++) {
+                if (tablero[fila][i] !=-1 ) {
+                    return false;
+                }else {
+                    for (int j = fila;j<fila+tamano;j++) {
+                        if (tablero[j][columna] != -1 ) {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+        }
     }
+
 
     /**
      * Coloca realmente el barco en el tablero, escribiendo su ID en todas las celdas.
