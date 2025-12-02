@@ -1,3 +1,5 @@
+import java.util.concurrent.LinkedTransferQueue;
+
 public class Tablero {
 
     /**
@@ -6,16 +8,26 @@ public class Tablero {
      * Lo devuelve como resultado!
      */
     public static int[][] crearTableroBarcos(int filas, int columnas) {
-        // TODO
-        return null;
+        int[][] tablerobarcos = new int[filas][columnas];
+        for (int i = 0; i < tablerobarcos.length; i++) {
+            for (int j = 0; j < tablerobarcos.length; j++) {
+                tablerobarcos[i][j]= -1;
+            }
+        }
+            return null;
     }
 
     /**
      * Crea un tablero de disparos y lo inicializa a '~' (no disparado).
      */
     public static char[][] crearTableroDisparos(int filas, int columnas) {
-        // TODO
-        return null;
+        char [][]tablerodisparos = new char [filas][columnas];
+        for (int i = 0 ; i < tablerodisparos.length; i++) {
+            for (int j = 0; j < tablerodisparos[i].length; j++) {
+                tablerodisparos[i][j] = '~';
+            }
+        }
+        return tablerodisparos;
     }
 
     /**
@@ -26,7 +38,17 @@ public class Tablero {
      * Recibe como entrada el tablero a imprimir, no devuelve nada de salida, simplemente lo imprime.
      */
     public static void mostrarTableroDisparos(char[][] tableroDisparos) {
-       // TODO
+        for (int i = tableroDisparos.length-1; i >= 0; i--) {
+            System.out.print(i);
+            for (int j = 0; j < tableroDisparos.length; j++) {
+                System.out.print(tableroDisparos[i][j]);
+            }
+            System.out.println();
+        }
+        System.out.print(" ");
+        for (int i = 0; i < tableroDisparos.length; i++) {
+            System.out.print(i);
+        }
     }
 
     /**

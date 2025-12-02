@@ -6,14 +6,22 @@ public class TaquillaTeatro {
 
         char[][]matriz = new char[5][5];
         GestorSala.inicializarmatriz(matriz);
-        GestorSala.mostrarsala(matriz);
         Scanner sc = new Scanner(System.in);
-        System.out.println("Dime una fila");
-        int fila = sc.nextInt();
-        System.out.println("Dime una columna");
-        int columna = sc.nextInt();
+        boolean continuar = true;
+        int fila;
+        int columna;
+        while (continuar) {
+            GestorSala.mostrarsala(matriz);
+            System.out.println("Dime una fila para reservar");
+            fila = sc.nextInt();
+            System.out.println("Dime una columna para reservar");
+            columna = sc.nextInt();
+            GestorSala.reservarasiento(matriz,  fila, columna);
+            System.out.println("Quieres continuar? true/false");
+            continuar = sc.nextBoolean();
+        }
 
-        GestorSala.reservarasiento(matriz,  fila, columna);
+
 
 
     }

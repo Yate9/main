@@ -18,11 +18,17 @@ public class GestorSala {
         }
     }
     public static boolean reservarasiento(char[][]sala, int fila, int columna){
-        if(fila<=sala.length){
-
-        }else if(columna<=sala[fila].length){
+        if(fila<=sala.length && fila>=0 &&  columna<=sala.length  && columna>=0){
+            if (sala[fila][columna]=='L'){
+                sala[fila][columna]='X';
+                return true;
+            }else {
+                System.out.println("El sitio que has elegido esta ocupado");
+                return false;
+            }
+        }else{
+        return false;
 
         }
-        return true;
     }
 }

@@ -12,7 +12,9 @@ public class Main {
         // Esto implica que hay 5 barcos de 5, 4, dos de 3, 2 casillas.
         int[] tamanosBarcos = {5, 4, 3, 3, 2};
         int numBarcos = tamanosBarcos.length;
+        char[][] tablero= Tablero.crearTableroDisparos(FILAS, COLUMNAS);
         System.out.println("Hola");
+        Tablero.mostrarTableroDisparos(tablero);
 
         // Tableros de barcos: guardan IDs de barco o -1 si no hay barco
         int[][] tableroBarcosJugador = Tablero.crearTableroBarcos(FILAS, COLUMNAS);
@@ -37,6 +39,7 @@ public class Main {
         // (aunque Java ya los inicializa a 0, hacedlo explícitamente con un for)
 
         // Colocar barcos
+        System.out.println();
         System.out.println("Colocando barcos del jugador...");
         // TODO: Usa la función adecuada para colocarlos.
 
