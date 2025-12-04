@@ -19,12 +19,12 @@ public class Barcos {
             int tamano = tamanosBarcos[idBarco];
             boolean colocado = false;
             while (!colocado) {
-                int fila = (int)Math.random()*tableroBarcos.length;
-                int columna = (int)Math.random()*tableroBarcos[0].length;
+                int fila = (int)(Math.random()*tableroBarcos.length);
+                int columna = (int)(Math.random()*tableroBarcos[0].length);
                 boolean horizontal = Math.random() > 0.5;
-                if (sePuedeColocarBarco(tableroBarcos, fila, columna,tamano, horizontal))
+                if (sePuedeColocarBarco(tableroBarcos, fila, columna,tamano, horizontal)){
                     colocarBarco(tableroBarcos,fila,columna,tamano,horizontal,idBarco);
-                colocado = true;
+                    colocado = true;
                 }
             }
         }
@@ -36,39 +36,46 @@ public class Barcos {
      *
      * Nos devuelve true si se puede colocar, false si no se puede colocar.
      */
+
     public static boolean sePuedeColocarBarco(int[][] tablero, int fila, int columna, int tamano, boolean horizontal) {
         if (horizontal) {
             if (columna + tamano > tablero[0].length) {
                 return false;
-            } else {
-                if (fila + tamano > tablero.length) {
+            }
+            for (int j = columna; j < columna + tamano; j++) {
+                if (tablero[fila][j] != -1) {
                     return false;
                 }
             }
-        }
-        if (horizontal) {
-            for(int i = columna; i <columna+tamano; i++) {
-                if (tablero[fila][i] !=-1 ) {
+        } else {
+            if (fila + tamano > tablero.length) {
+                return false;
+            }
+            for (int i = fila; i < fila + tamano; i++) {
+                if (tablero[i][columna] != -1) {
                     return false;
-                }else {
-                    for (int j = fila;j<fila+tamano;j++) {
-                        if (tablero[j][columna] != -1 ) {
-                            return false;
-                        }
-                    }
                 }
             }
         }
         return true;
-        }
     }
+
+
 
 
     /**
      * Coloca realmente el barco en el tablero, escribiendo su ID en todas las celdas.
      */
     public static void colocarBarco(int[][] tablero, int fila, int columna, int tamano, boolean horizontal, int idBarco) {
-        // TODO
+        if(horizontal) {
+            for(int i=columna; i<columna+tamano ;i++) {
+                tablero[fila][i]=idBarco;
+            }
+        }else  {
+            for(int i=fila; i<fila + tamano;i++) {
+                tablero[i][columna]=idBarco;
+            }
+        }
     }
 
     /**
@@ -79,7 +86,11 @@ public class Barcos {
      * del jugador atacado para comprobar si ha acabado la partida.
      */
     public static boolean todosHundidos(int[] impactos, int[] tamanosBarcos) {
-        //TODO
-        return false;
+        for (int i = 0; i < impactos.length; i++) {
+            if (impactos[i] < tamanosBarcos[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 }
