@@ -8,8 +8,8 @@ public class Utilidades {
      * Devuelve un número entero aleatorio entre min y max (ambos incluidos).
      */
     public static int numeroAleatorio(int min, int max) {
-        // TODO
-        return -1;
+        int numeroAleatorio = (int) (Math.random() * (max - min)) + min;
+        return numeroAleatorio;
     }
 
     /**
@@ -21,10 +21,25 @@ public class Utilidades {
      * Si la coordenada no es válida, debe devolver -1.
      */
     public static int convertirFila(String coord) {
-        // TODO: extraer la parte numérica y convertirla a int
-
-        return -1;
+        if (coord ==null || coord.length() != 2) {
+            return -1;
+        }
+        String partenumerica = coord.substring(1);
+        for (int i = 0; i < partenumerica.length(); i++) {
+            boolean esdigito = false;
+            for (int j = 0; j <= 9; j++) {
+                if (partenumerica.charAt(i) ==('0'+j)) {
+                    esdigito = true;
+                    break;
+                }
+            }
+            if (!esdigito) {
+                return -1;
+            }
+        }
+        return Integer.parseInt(partenumerica);
     }
+
 
     /**
      * Convierte una coordenada tipo "A5" en columna.
