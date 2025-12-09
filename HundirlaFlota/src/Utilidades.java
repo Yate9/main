@@ -48,7 +48,16 @@ public class Utilidades {
      * Si la coordenada no es válida, puede devolver -1.
      */
     public static int convertirColumna(String coord) {
-       // TODO
+        if (coord==null || coord.length()!=2){
+            return -1;
+        }
+        char letra = coord.charAt(0);
+
+        for (char i='A';i<='Z';i++) {
+            if (letra == i){
+                return letra-'A';
+            }
+        }
         return -1;
     }
 
