@@ -11,13 +11,13 @@ public class Disparos {
 
     /**
      * Procesa un disparo sobre (fila, columna).
-     *
+     * <p>
      * - Si no hay barco (idBarco == -1): marca 'A' (agua).
      * - Si hay barco:
-     *      - incrementa impactosBarco[idBarco] - ya que tiene un impacto más.
-     *      - si impactos < tamaño → 'T' (tocado) - ya que es por ejemplo el segundo impacto en un barco de 3
-     *      - si impactos == tamaño → marcar TODAS sus celdas como 'H' (hundido)
-     *
+     * - incrementa impactosBarco[idBarco] - ya que tiene un impacto más.
+     * - si impactos < tamaño → 'T' (tocado) - ya que es por ejemplo el segundo impacto en un barco de 3
+     * - si impactos == tamaño → marcar TODAS sus celdas como 'H' (hundido)
+     * <p>
      * Devuelve true si el disparo ha hundido un barco, false en caso contrario.
      */
     public static boolean procesarDisparo(
@@ -28,7 +28,29 @@ public class Disparos {
             int[] impactosBarco,
             int[] tamanosBarco
     ) {
-        // TODO
-        return true;
+        int idBarco = tableroBarcos[fila][columna];
+        if (idBarco == -1) {
+            tableroDisparos[fila][columna] = 'A';
+            return false;
+        }
+        impactosBarco[idBarco]++;
+        int impactos = impactosBarco[idBarco];
+        int tamano = tamanosBarco[idBarco];
+        if (impactos < tamano) {
+            tableroDisparos[fila][columna] = 'T';
+            return false;
+        }
+
+        if (impactos == tamano) {
+            for (int i = 0; i < tableroBarcos.length; i++) {
+                for (int j = 0; j < tableroBarcos[i].length; j++) {
+                    if (tableroBarcos[i][j] == idBarco) {
+                        tableroDisparos[i][j] = 'H';
+                    }
+                }
+            }
+            return true;
+        }
+        return false;
     }
 }

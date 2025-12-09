@@ -9,7 +9,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         // Tamaños de los barcos (podéis cambiarlos si queréis)
-        // Esto implica que hay 5 barcos de 5, 4, dos de 3, 2 casillas.
+        // Esto impli   ca que hay 5 barcos de 5, 4, dos de 3, 2 casillas.
         int[] tamanosBarcos = {5, 4, 3, 3, 2};
         int numBarcos = tamanosBarcos.length;
         char[][] tablero= Tablero.crearTableroDisparos(FILAS, COLUMNAS);
@@ -22,7 +22,6 @@ public class Main {
         // Tableros de disparos: lo que ve cada jugador (agua, tocado, hundido, sin disparar)
         char[][] tableroDisparosJugador = Tablero.crearTableroDisparos(FILAS, COLUMNAS);
         char[][] tableroDisparosCPU = Tablero.crearTableroDisparos(FILAS, COLUMNAS);
-        Tablero.mostrarTableroConBarcos(tableroBarcosJugador, tableroDisparosCPU);
         // Impactos por barco.
         // Aquí guardaremos cuantos impactos lleva cada barco.
         // Por ejemplo:
