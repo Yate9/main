@@ -49,6 +49,7 @@ public class Tablero {
         for (int i = 0; i < tableroDisparos.length; i++) {
             System.out.print(i);
         }
+        System.out.println();
     }
 
     /**
@@ -70,34 +71,31 @@ public class Tablero {
 
         int filas = tablerobarcos.length;
         int columnas = tablerobarcos[0].length;
-
         for (int i=filas-1 ; i >=0; i--) {
             System.out.print(i+" ");
             for (int j = 0; j < columnas; j++) {
                 int barco = tablerobarcos[i][j];
                 char disparo = tablerodisparoscpu[i][j];
                 char simbolo;
-                if (barco==-1) {
-                    if (disparo =='.') {
-                        simbolo = '.';
-                    }else {
-                        simbolo = '~';
-                    }
-
-                }else {
-                    if (disparo =='.') {
-                        simbolo = (char)('0'+barco);
-                    }else {
+                if (barco == -1) {
+                    if (disparo == 'A') simbolo = 'A';
+                    else if (disparo == 'T') simbolo = 'T';
+                    else if (disparo == 'H') simbolo = 'H';
+                    else simbolo = '~';
+                } else {
+                    if (disparo == '~') {
+                        simbolo = (char) ('0' + barco);
+                    } else {
                         simbolo = disparo;
                     }
                 }
-                System.out.print(simbolo+" ");
+                System.out.print(simbolo + " ");
             }
             System.out.println();
         }
-        System.out.print(" ");
-        for (int i = 0 ; i < columnas; i++) {
-            System.out.print(i+" ");
+        System.out.print("  ");
+        for (int i = 0; i < columnas; i++) {
+            System.out.print(i + " ");
         }
         System.out.println();
     }
